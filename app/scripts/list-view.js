@@ -16,12 +16,11 @@ var ListView = Backbone.View.extend({
 
 		// if this model changes, render any new changes immediately, WITHOUT REFRESH
 
-		this.listenTo(this.model, 'change', this.render)
+		this.listenTo(this.model, 'change', this.render);
 
 	},
 
 	render: function(){
-
 		var renderedTemplate = this.createTemplate( this.model.attributes )
 
 		 // data in models is stored in attributes. we don't want all of the methods for the model 
@@ -30,13 +29,13 @@ var ListView = Backbone.View.extend({
   
 	},
 
-	createMainView: function(){
+	// createMainView: function(){
 
-		new MainView ({model: this.model})
+	// 	new MainView ({model: this.model})
 
-		$( "body" ).animate({scrollTop: $(".jumbotron").offset().top - 50 }, "slow");
-    	console.log('executed scrollToElement');
-	}
+	// 	$( "body" ).animate({scrollTop: $(".jumbotron").offset().top - 50 }, "slow");
+ //    	console.log('executed scrollToElement');
+	// }
 
 });
 
