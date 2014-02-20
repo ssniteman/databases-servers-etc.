@@ -4,13 +4,36 @@ $(document).ready(function(){
 
 // start the app
 
-window.contacts = new ContactsCollection( data )
+window.contacts = new ContactsCollection( );
 
-contacts.each(function(contact){
+// goes and fetches whatever is stored on the database already and renders to page
 
-	new ListView({model: contact});
+contacts.fetch({
+    success: function(){
+      contacts.each(function(contact){
+        new ListView({model: contact});
+      })
+      
+    },
+    error: function(){
+      console.log('WHOAAAAAAAAAA theres a problem')
+    }
+  })
 
-	// "contact" can be anything... just an argument
+$('.savebtn').click(function(){
+
+	var musician = new Contact()
+
+	// if
+
+
+	var freshModel = contacts.add(musician);
+
+	new ListView({model: freshModel})
+
+	freshModel.save()
+
 })
+
 
 });
